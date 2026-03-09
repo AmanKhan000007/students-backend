@@ -1,5 +1,5 @@
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
+import { AppModule } from '../app.module';
 import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
@@ -18,10 +18,11 @@ async function bootstrap() {
       transform: true,
     }),
   );
-
+  
   const port = process.env.PORT || 3001;
   await app.listen(port);
 
   console.log(`🚀 Students API running on port ${port}`);
 }
+
 bootstrap();
