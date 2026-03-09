@@ -12,27 +12,17 @@ import { Student } from './students/student.entity';
       inject: [ConfigService],
       useFactory: (config: ConfigService) => ({
         type: 'postgres',
-        url: process.env.DATABASE_URL,
+        host: config.get('DB_HOST', 'localhost'),
+        port: config.get<number>('DB_PORT', 5432),
+        username: config.get('DB_USERNAME', 'postgres'),
+        password: config.get('DB_PASSWORD', '123'),
+        database: config.get('DB_NAME', 'students_db'),
         entities: [Student],
         synchronize: true,
-        ssl: { rejectUnauthorized: false },
-        logging: false,
+        ssl: false,
       }),
     }),
     StudentsModule,
   ],
 })
 export class AppModule {}
-```
-
----
-
-## Step 3 — Add DATABASE_URL variable in Railway
-
-1. Go to `students-backend` → **Variables**
-2. Click **+ New Variable**
-3. Name: `DATABASE_URL`
-4. Go to Postgres service → **Connect** tab
-5. Copy the **connection string** that looks like:
-```
-postgresql://postgres:password@host:port/railway
