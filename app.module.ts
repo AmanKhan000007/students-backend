@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { StudentsModule } from './students/students.module';
-import { Student } from './students/student.entity';
+import { StudentsModule } from './src/students/students.module';
+import { Student } from './src/students/student.entity';
 
 @Module({
   imports: [
