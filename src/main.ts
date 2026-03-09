@@ -7,10 +7,10 @@ async function bootstrap() {
 
   // Enable CORS so React frontend can call this API
   app.enableCors({
-    origin: 'http://localhost:3000', // React app URL
-    methods: ['GET', 'POST', 'PATCH', 'DELETE'],
-    allowedHeaders: ['Content-Type'],
-  });
+  origin: '*',
+  methods: ['GET', 'POST', 'PATCH', 'DELETE'],
+  allowedHeaders: ['Content-Type'],
+});
 
   // Enable global validation
   app.useGlobalPipes(
